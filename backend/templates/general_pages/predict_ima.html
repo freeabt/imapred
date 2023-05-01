@@ -1,0 +1,21 @@
+{% extends "shared/base.html" %}
+
+
+{% block title %} 
+  <title>imapred</title>
+{% endblock %} 
+
+
+{% block content %} 
+<div class="container">
+    <h1 class="text-center">Select a file to predict its content</h1>
+        <form class="p-3 text-center" action='/predict', method="post" enctype="multipart/form-data">
+            <input class="form-control" type="file" name="file">
+            <input class="btn btn-primary mt-3" type="submit" value="Predict">
+        </form>
+        {% if result %}
+            <p class="text-center"><img src="data:image/jpeg;base64,{{ myImage | safe }}" width="400px"></p>
+            <p class="text-center"><h3 class="text-center">Result: {{ result }}</h3></p>
+        {% endif %}
+</div>
+{% endblock %}
